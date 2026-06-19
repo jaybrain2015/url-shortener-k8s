@@ -26,12 +26,12 @@ jobs:
             working-directory: ./app
             
          - name: Build the Docker image
-           run: docker build -t url-shortener ./app   
+           run: docker build -t url-shortener:latest ./app   
            
          - name: Scan image for vulnerabilities
            uses: aquasecurity/trivy-action@master
            with:
-            image-ref: url-shortener
+            image-ref: url-shortener:latest
             format: table
             exit-code: "1"
             severity: CRITICAL,HIGH
@@ -44,5 +44,7 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
 
-         -  name: Push the image
-            run: docker push ghcr.io/jaybrain2015/url-shortener:latest  
+         - name: Tag and push the image
+           run: |
+            docker tag url-shortener:latest ghcr.io/jaybrain2015/url-shortener:latest
+            docker push ghcr.io/jaybrain2015/url-shortener:latest
