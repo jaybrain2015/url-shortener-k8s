@@ -13,7 +13,8 @@ class URL(SQLModel, table=True):
     long_url: str
 
 
-engine = create_engine(os.environ["DATABASE_URL"])    
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///urls.db")
+engine = create_engine(DATABASE_URL)  
 
 
 def create_db_and_table():
