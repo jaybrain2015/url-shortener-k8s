@@ -2,3 +2,5 @@ fastapi[standard]
 sqlmodel
 redis
 psycopg2-binary
+pytest
+httpx

@@ -13,5 +13,17 @@ jobs:
          -  name: Check out the code  
             uses: actions/checkout@v4
 
+         -  name: Set up python
+            uses: actions/setup-python@v5
+            with:
+                python-version: "3.12"  
+         
+         -  name: install dependencies
+            run:  pip install -r app/requirements.txt
+            
+         -  name: Run tests
+            run: pytest
+            working-directory: ./app
+            
          - name: Build the Docker image
            run: docker build -t url-shortener ./app    
