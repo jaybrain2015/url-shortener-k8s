@@ -1,0 +1,15 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Local database file (data shouldn't be in git)
+*.db
+
+# Environment / secrets
+.env
+
+# OS noise
+.DS_Store
+
+.vscode/
