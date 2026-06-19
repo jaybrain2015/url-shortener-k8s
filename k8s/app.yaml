@@ -20,7 +20,15 @@ spec:
             - containerPort: 8000
           env:
             - name: DATABASE_URL
-              value: "postgresql://shortener:shortenerpass@db:5432/shortenerdb"  
+              value: "postgresql://shortener:shortenerpass@db:5432/shortenerdb" 
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi    
+
 ---
 apiVersion: v1
 kind: Service
