@@ -12,10 +12,11 @@ spec:
       labels:
         app: shortener
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: app
-          image: url-shortener
-          imagePullPolicy: IfNotPresent
+          image: ghcr.io/jaybrain2015/url-shortener:latest
           ports:
             - containerPort: 8000
           env:
@@ -35,8 +36,10 @@ kind: Service
 metadata:
   name: app
 spec:
+  type: NodePort
   selector:
     app: shortener
   ports:
     - port: 8000
       targetPort: 8000
+      nodePort: 30080

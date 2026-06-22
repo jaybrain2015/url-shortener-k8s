@@ -13,3 +13,9 @@ __pycache__/
 .DS_Store
 
 .vscode/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
