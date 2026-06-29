@@ -9,3 +9,9 @@ variable "ip_range" {
   type        = string
   default     = "10.0.0.0/16"
 }
+
+variable "admin_ip" {
+  description = "Your IP address allowed to reach SSH and the k8s API"
+  type        = string
+  default     = "37.0.161.65/32"
+}

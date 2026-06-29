@@ -4,3 +4,4 @@ redis
 psycopg2-binary
 pytest
 httpx
+prometheus-fastapi-instrumentator

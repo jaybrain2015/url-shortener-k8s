@@ -26,7 +26,7 @@ resource "hcloud_firewall" "main" {
     direction  = "in"
     protocol   = "tcp"
     port       = "22"
-    source_ips = ["0.0.0.0/0", "::/0"]
+    source_ips = [var.admin_ip]
   }
 
   # Allow HTTP
@@ -50,7 +50,7 @@ resource "hcloud_firewall" "main" {
     direction  = "in"
     protocol   = "tcp"
     port       = "6443"
-    source_ips = ["0.0.0.0/0", "::/0"]
+    source_ips = [var.admin_ip]
   }
 
   # Allow the app's NodePort
@@ -58,6 +58,6 @@ resource "hcloud_firewall" "main" {
     direction  = "in"
     protocol   = "tcp"
     port       = "30080"
-    source_ips = ["0.0.0.0/0", "::/0"]
+    source_ips = ["0.0.0.0/0"]
   }
 }

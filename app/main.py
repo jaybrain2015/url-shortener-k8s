@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 from sqlmodel import SQLModel, Field, Session, create_engine, select
+from prometheus_fastapi_instrumentator import Instrumentator
 import secrets
 import redis
 import os
@@ -21,6 +22,8 @@ def create_db_and_table():
     SQLModel.metadata.create_all(engine)
 
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)
 
 @app.on_event("startup")
 def on_startup():
