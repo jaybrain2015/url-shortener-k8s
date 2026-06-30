@@ -51,6 +51,9 @@ def shorten_url(long_url: str):
 @app.get("/{short_code}")
 def redirect_to_url(short_code: str):
 
+    if short_code in ("metrics", "docs", "openapi.json", "favicon.ico", "health"):
+        raise HTTPException(status_code=404, detail="Not a short code")
+
     cached_url = cache.get(short_code)
     if cached_url:
         print(f"CACHE HIT for {short_code}")

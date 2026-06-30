@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-metrics
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: shortener
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
